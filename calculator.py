@@ -1,39 +1,54 @@
-import sys
+def calculator(codes,salarys):
+    
+        a = b * 0.835 - 3500
 
-salary = sys.argv[1]
+        if a <= 0:
+            tax = 0
+        elif a <= 1500:
+            tax = a * 0.03
 
-try:
-   b = int(salary)
+        elif a <= 4500:
+            tax = a * 0.1-105
 
-except:
-    print("Parameter Error")
+        elif a <= 9000:
+            tax = a * 0.2 - 555
 
-a = b - 3500
+        elif a <= 35000:
+            tax = a * 0.25 - 1005
 
-if a <= 1500:
-    tax = a * 0.03
-    print(format(tax,".2f"))
+        elif a <= 55000:
+            tax = a * 0.3 - 2755
 
-elif a <= 4500:
-    tax = a * 0.1-105
-    print(format(tax,".2f"))
+        elif a <= 80000:
+            tax = a* 0.35 - 5505
 
-elif a <= 9000:
-    tax = a * 0.2 - 555
-    print(format(tax,".2f"))
+        else:
+            tax = a * 0.45 - 13505
 
-elif a <= 35000:
-    tax = a * 0.25 - 1005
-    print(format(tax,".2f"))
+        aftersalary = b * 0.835 - tax
 
-elif a <= 55000:
-    tax = a * 0.3 - 2755
-    print(format(tax,".2f"))
+        format(aftersalary,'2f')
 
-elif a <= 80000:
-    tax = a* 0.35 - 5505
-    print(format(tax,".2f"))
+        print('{}:{:.2f}'.format(codes,aftersalary))
 
-else:
-    tax = a * 0.45 - 13505
-    print(format(tax,".2f"))
+if __name__ == '__main__':
+
+    import sys
+
+    for arg in sys.argv[1:]:
+
+        code_salary = arg.split (':')
+
+        code = code_salary[0] 
+        
+        salary = code_salary[1]
+
+        try:
+            b = int(salary)
+    
+            c = int(code)
+        except:
+            print("Parameter Error")
+
+        calculator(c,b)
+
